@@ -208,7 +208,7 @@
 }
 
 .box-third {
-  background-color: #354b37;
+  background-color: white;
   height: 440px;
   width: 380px;
   padding: 20px 10px;
@@ -221,4 +221,54 @@
   text-align: center;
   vertical-align: middle;
   margin: auto;
+}
+
+.text-moments {
+  color: white;
+  font-family: GT Flexa;
+  font-size: 24px;
+}
+
+.title{
+    color: black;
+    font-family: GT Flexa;
+    font-size: 24px;
+    margin: 15px 0 ;
+}
+
+@font-face {
+  font-family: GT Flexa;
+  src: url(../../Fonts/GT-Flexa-Standard-Medium.otf);
+}
+
+.taggingInfo {
+  color: white;
+  margin: 0 100px;
+}
+
+.moment {
+  background: linear-gradient(
+    90deg,
+    hsla(288, 20%, 75%, 1) 0%,
+    hsla(197, 65%, 42%, 1) 100%
+  );
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.input {
+  align-items: center;
+
+  margin: 10px 0;
+
+  width: 249px;
+  height: 44px;
+
+  /* Grey/Grey-100 */
+
+  background: #f2f2f2;
+  /* Grey/Grey-400 */
+
+  border: 2px solid #cccccc;
+  border-radius: 10px;
 }

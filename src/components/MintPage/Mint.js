@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { RedeemOut, Redeem, Title, Description } from "../Redeem2";
 import "./style.css";
+import Unfold from "../../assets/Unfold.svg";
+import Image from "../../assets/Image.svg";
 
 import { useWeb3React } from "@web3-react/core";
 
@@ -65,7 +67,7 @@ export const LeaderboardContainer = styled.div`
 `;
 
 const Container = styled.div`
-  background: #354b37;
+  background: black;
 `;
 const ImgContainer = styled.div`
   justify-items: center;
@@ -146,7 +148,7 @@ const Description2 = styled.div`
 const InputContainer = styled.div`
   width: 100%;
   height: 785px;
-  background: #ffd731;
+  background: black;
 `;
 
 export const Titles = styled.div`
@@ -160,11 +162,10 @@ export const Titles = styled.div`
   display: flex;
   align-items: center;
 
-  color: #989898;
 
   display: inline-block;
   text-transform: uppercase;
-  color: #989898;
+  color: #fffff;
   margin: 0 9% 0 0;
 `;
 
@@ -363,27 +364,15 @@ const EthMoments = () => {
   return (
     <>
       <Container>
-        <Hero>
-          {/* <img
-            src={Logo}
-            width="21.35px"
-            height="29.06px"
-            className="eth-bcn-moments"
-          ></img> */}
-          <Title2>Moments</Title2>
-          <Title3>ETHCC</Title3>
-          <Description2>
-            Let your experience live on the blockchain by sharing your best
-            moments at ETHCC, Paris.
-          </Description2>
-        </Hero>
+        <img src={Unfold} />
+        <img src={Image} className="moment"/>
         <InputContainer>
           <Forum>
             <label className="text-moments">Title</label>
             <br />
             <input
               type="text"
-              placeholder="Add a title to your moment"
+              placeholder="High AF"
               className="input"
               value={momentsData.title}
               onChange={(e) => {
@@ -396,8 +385,8 @@ const EthMoments = () => {
             <br />
             <textarea
               type="text"
-              placeholder="Add a description to your moment"
-              className="input-description"
+              placeholder="On Shrooms"
+              className="input"
               value={momentsData.description}
               onChange={(e) => {
                 setMomentsData({ ...momentsData, description: e.target.value });
@@ -410,7 +399,7 @@ const EthMoments = () => {
             <input
               multiple
               type="text"
-              placeholder="Tag Yourself and your friends"
+              placeholder="weed.eth, lsd.dao, coke.nft"
               className="input"
               value={walletAddresses}
               onChange={(e) => {
@@ -419,7 +408,7 @@ const EthMoments = () => {
               }}
             ></input>
             <p className="taggingInfo">
-              Ex. test.eth, 0x5c0085E600398247a37de389931CCea8EdD3ba67, etc.
+              Ex. test.eth, lsd.dao etc.
               (seprated by comma)
             </p>
 
@@ -451,10 +440,9 @@ const EthMoments = () => {
                 pointerEvents: popup ? "none" : null,
               }}
             >
-              <Redeem>
-                {/* {minting ? <span>Minting...</span> : <span>Mint a Moment</span>} */}
-                <span>Mint a Moment</span>
-              </Redeem>
+             
+                <span className="text-moments">Mint a Moment</span>
+    
             </RedeemOut>
           </Forum>
         </InputContainer>
@@ -515,7 +503,7 @@ const EthMoments = () => {
                         target={"_blank"}
                         style={{ color: "white" }}
                       >
-                        View your moment here ->
+                        View your moment here -
                       </a>
                     </Description>
                   ) : null}
