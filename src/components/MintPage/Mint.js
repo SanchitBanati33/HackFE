@@ -66,6 +66,9 @@ export const LeaderboardContainer = styled.div`
 
 const Container = styled.div`
   background: black;
+  display:grid;
+  justify-content:center;
+  margin: 0 auto;
 `;
 const ImgContainer = styled.div`
   justify-items: center;
@@ -361,7 +364,7 @@ const EthMoments = () => {
   return (
     <>
       <Container>
-        <img src={Unfold} />
+        <img src={Unfold} className="moment"/>
         <img src={Image} className="moment"/>
         <InputContainer>
           <Forum>
