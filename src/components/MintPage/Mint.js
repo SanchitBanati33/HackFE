@@ -6,8 +6,6 @@ import "./style.css";
 import Unfold from "../../assets/Unfold.svg";
 import Image from "../../assets/Image.svg";
 
-import { useWeb3React } from "@web3-react/core";
-
 import { useUploadArtwork, Claim } from "./functions";
 import { config } from "../../config/config";
 import { toChecksumAddress } from "ethereum-checksum-address";
@@ -178,7 +176,6 @@ const options = {
 const EthMoments = () => {
   const { uploadFile } = useUploadArtwork();
 
-  const { library, account } = useWeb3React();
   const [AccessToken, setAccessToken] = useState();
   const [file, setFile] = useState();
   const [momentsData, setMomentsData] = useState({
