@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { RedeemOut, Redeem, Title, Description } from "../Redeem2";
 import "./style.css";
 
-import { useWeb3React } from "@web3-react/core";
-
 import { useUploadArtwork, Claim } from "./functions";
 import { config } from "../../config/config";
 import { toChecksumAddress } from "ethereum-checksum-address";
@@ -177,7 +175,6 @@ const options = {
 const EthMoments = () => {
   const { uploadFile } = useUploadArtwork();
 
-  const { library, account } = useWeb3React();
   const [AccessToken, setAccessToken] = useState();
   const [file, setFile] = useState();
   const [momentsData, setMomentsData] = useState({
