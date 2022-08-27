@@ -31,6 +31,18 @@ const Mint = () => {
             <Title> Title </Title>
             <input type="text" placeholder="High AF" className="input" />
           </label>
+          <label>
+            <Title> Description </Title>
+            <input type="text" placeholder="High AF" className="input" />
+          </label>
+          <label>
+            <Title> Creator </Title>
+            <input type="text" placeholder="High AF" className="input" />
+          </label>
+          <label>
+            <Title> Tag your Friends </Title>
+            <input type="text" placeholder="High AF" className="input" />
+          </label>
 
         </form>
       </MintingInfo>
