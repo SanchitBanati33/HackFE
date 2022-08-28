@@ -222,7 +222,7 @@ const EthMoments = () => {
       // const url = `${config.dgApiBaseUrl}/authentication/authentication`;
       // const res = await axios.post(url, data, configOptions);
       // console.log(res.data);
-      const url = `https://honetpot.kraznikunderverse.com/getAccessToken`;
+      const url = `${config.apiBaseUrl}/getAccessToken`;
       const { data } = await axios.get(url);
       console.log("access token: ", data);
       setAccessToken(data);
@@ -249,12 +249,7 @@ const EthMoments = () => {
     setMinting(true);
     try {
       if (file && AccessToken) {
-        var nftTypeId = await uploadFile(
-          file,
-          AccessToken,
-          library,
-          momentsData
-        );
+        var nftTypeId = await uploadFile(file, AccessToken, momentsData);
         setMinting(false);
       }
       setSuccess(true);

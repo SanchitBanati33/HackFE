@@ -1,6 +1,6 @@
 const configTestnet = {
   chainId: 80001,
-  apiBaseUrl: "https://honetpot.kraznikunderverse.com", //"https://eth-barcelona.kraznikunderverse.com",
+  apiBaseUrl: "http://localhost:3456", // "https://honetpot.kraznikunderverse.com", //"https://eth-barcelona.kraznikunderverse.com",
   dgApiBaseUrl: "https://api-main.doingud.work",
   dgAppBaseUrl: "https://main.doingud.work",
   alchemyUrl: `https://polygon-mumbai.g.alchemy.com/v2/WWvtjuEXcDbNHpx1f65J2dF3PP8JhVwN`,
