@@ -66,8 +66,8 @@ export const LeaderboardContainer = styled.div`
 
 const Container = styled.div`
   background: black;
-  display:grid;
-  justify-content:center;
+  display: grid;
+  justify-content: center;
   margin: 0 auto;
 `;
 const ImgContainer = styled.div`
@@ -163,7 +163,6 @@ export const Titles = styled.div`
   display: flex;
   align-items: center;
 
-
   display: inline-block;
   text-transform: uppercase;
   color: #fffff;
@@ -204,20 +203,6 @@ const EthMoments = () => {
       },
     };
 
-    // jws proof for each user id
-    const data = {
-      userId: process.env.REACT_APP_ETHCC_USER_ID,
-      proof: {
-        payload: process.env.REACT_APP_ETHCC_PAYLOAD,
-        signatures: [
-          {
-            protected: process.env.REACT_APP_ETHCC_PROTECTED,
-            signature: process.env.REACT_APP_ETHCC_SIGNATURE,
-          },
-        ],
-      },
-    };
-
     try {
       // const url = `${config.dgApiBaseUrl}/authentication/authentication`;
       // const res = await axios.post(url, data, configOptions);
@@ -239,6 +224,7 @@ const EthMoments = () => {
   const retrieveFile = (e) => {
     const data = e.target.files[0];
     setFile(data);
+    console.log("file: ", data);
 
     e.preventDefault();
   };
@@ -359,8 +345,8 @@ const EthMoments = () => {
   return (
     <>
       <Container>
-        <img src={Unfold} className="moment"/>
-        <img src={Image} className="moment"/>
+        <img src={Unfold} className="moment" />
+        <img src={Image} className="moment" />
         <InputContainer>
           <Forum>
             <label className="text-moments">Title</label>
@@ -403,8 +389,7 @@ const EthMoments = () => {
               }}
             ></input>
             <p className="taggingInfo">
-              Ex. test.eth, lsd.dao etc.
-              (seprated by comma)
+              Ex. test.eth, lsd.dao etc. (seprated by comma)
             </p>
 
             <Flex>
@@ -435,9 +420,7 @@ const EthMoments = () => {
                 pointerEvents: popup ? "none" : null,
               }}
             >
-             
-                <span className="text-moments">Mint a Moment</span>
-    
+              <span className="text-moments">Mint a Moment</span>
             </RedeemOut>
           </Forum>
         </InputContainer>
