@@ -10,6 +10,8 @@ import { Resolution } from "@unstoppabledomains/resolution";
 import { useUploadArtwork, Claim } from "./functions";
 import { config } from "../../config/config";
 import { toChecksumAddress } from "ethereum-checksum-address";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import Web3 from "web3";
 
 export const Activity = styled.div`
@@ -446,6 +448,21 @@ const EthMoments = () => {
             >
               <span className="text-moments">Mint a Moment</span>
             </RedeemOut>
+
+            <Popup
+              trigger={<button className="profile"> See your Profile </button>}
+              position="center"
+            >
+              <div className="inputwallet">
+                <label>Enter your Wallet (ENS or UD)</label>
+                <input
+                  type="text"
+                  placeholder="weed.eth, lsd.dao, coke.nft"
+                  className="inputw"
+                ></input>
+                <button className="submit">Submit</button>
+              </div>
+            </Popup>
           </Forum>
         </InputContainer>
 
@@ -488,14 +505,14 @@ const EthMoments = () => {
               </button>
 
               {minting ? (
-                <Description style={{ color: "white" }}>
+                <Description style={{ color: "blacl" }}>
                   Please have patience...it's minting...
                 </Description>
               ) : null}
 
               {success ? (
                 <>
-                  <Description style={{ color: "white" }}>
+                  <Description style={{ color: "black" }}>
                     Successfully minted!!
                   </Description>
                   {nftTypeId ? (
@@ -503,7 +520,7 @@ const EthMoments = () => {
                       <a
                         href={`${config.dgAppBaseUrl}/creation/${nftTypeId}`}
                         target={"_blank"}
-                        style={{ color: "white" }}
+                        style={{ color: "black" }}
                       >
                         View your moment here -
                       </a>
@@ -513,7 +530,7 @@ const EthMoments = () => {
               ) : null}
 
               {Error ? (
-                <Description style={{ color: "white" }}>
+                <Description style={{ color: "black" }}>
                   Got some Error!!
                 </Description>
               ) : null}
