@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "unfold-hack-moments"
-  }
+    "default": "unfold-hack-moments",
+    "mainnet": "unfold-moments"
+  },
+  "targets": {}
 }

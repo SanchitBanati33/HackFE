@@ -5,6 +5,7 @@ import { RedeemOut, Redeem, Title, Description } from "../Redeem2";
 import "./style.css";
 import Unfold from "../../assets/Unfold.svg";
 import Image from "../../assets/Image.svg";
+import { Resolution } from "@unstoppabledomains/resolution";
 
 import { useUploadArtwork, Claim } from "./functions";
 import { config } from "../../config/config";
@@ -247,6 +248,16 @@ const EthMoments = () => {
     }
   };
 
+  const resolvedUNS = async (domain, currency = "ETH") => {
+    try {
+      const resolution = new Resolution();
+      const address = await resolution.addr(domain, currency);
+      return address;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const getListOfWalletAddresses = async (walletAddresses) => {
     try {
       console.log(walletAddresses);
@@ -274,6 +285,19 @@ const EthMoments = () => {
             const web3 = new Web3(provider);
             walletAddress = await web3.eth.ens.getAddress(address.trim());
             console.log("wallet address: ", walletAddress);
+          } else if (
+            address.slice(-6) === "wallet" ||
+            address.slice(-6) === "crypto" ||
+            address.slice(-3) === "nft" ||
+            address.slice(-10) === "blockchain" ||
+            address.slice(-7) === "bitcoin" ||
+            address.slice(-4) === "coin" ||
+            address.slice(-3) === "888" ||
+            address.slice(-3) === "dao" ||
+            address.slice(-1) === "x"
+          ) {
+            walletAddress = await resolvedUNS(address, "ETH");
+            console.log("wallet from uns: ", walletAddress);
           }
         } catch (err) {
           console.log("error resolving ens name");
