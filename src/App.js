@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import LeaderBoard from "./components/LeaderBoard";
 // import Mint, { Navbar } from "./components/MintPage";
@@ -11,16 +16,45 @@ function App() {
   return (
     <div className="App">
       <Router>
+        {/* <Mint exact path="/"></Mint> */}
         <Routes>
-          <Route exact path="/">
-            <Mint></Mint>
-          </Route>
-          <Route exact path="/profile/:wallet">
+          {/* <Route  path="/profile">
             <Profile />
           </Route>
-          <Route exact path="/lb">
+
+          <Route  path="/lb">
             <LeaderBoard />
-          </Route>
+          </Route> */}
+
+          <Route
+            exact
+            path="/profile/:wallet"
+            element={
+              <>
+                <Profile></Profile>
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <Mint />
+              </>
+            }
+          />
+
+          <Route
+            exact
+            path="/lb"
+            element={
+              <>
+                <LeaderBoard />
+              </>
+            }
+          />
         </Routes>
       </Router>
 
