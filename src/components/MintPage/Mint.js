@@ -65,7 +65,7 @@ export const LeaderboardContainer = styled.div`
 `;
 
 const Container = styled.div`
-  background: white;
+  background: black;
   display:grid;
   justify-content:center;
   margin: 0 auto;
