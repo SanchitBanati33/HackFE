@@ -8,8 +8,8 @@ import Popup from "./components/Popup";
 function App() {
   return (
     <div className="App">
-      {/* <Mint></Mint> */}
-      <LeaderBoard />
+      <Mint></Mint>
+      {/* <LeaderBoard /> */}
     </div>
   );
 }
