@@ -1,22 +1,18 @@
 import styled from "styled-components";
 
 export const RedeemOut = styled.div`
-  width: 156.7px;
-  height: 50px;
-  border-radius: 50%;
-  border: 0.8px solid #354b37;
-  transform: rotate(-3.12deg);
-  margin: auto;
 
-  &:hover {
-    transform: rotate(+3.12deg);
-  }
+width: 177px;
+height: 44px;
+align-items: center;
+margin: 0 auto;
 
-  @media (max-width: 800px) {
-    width: 156.7px;
-    height: 50px;
-    margin: 10px auto;
-  }
+background: black;
+/* Primary */
+padding: 10px;
+
+border: 2px solid white;
+border-radius: 10px;
 `;
 
 export const Redeem = styled.button`
