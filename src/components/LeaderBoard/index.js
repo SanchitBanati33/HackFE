@@ -43,7 +43,7 @@ const LeaderBoard = () => {
 
   const fetchLeaderboard = async () => {
     const url = `${config.apiBaseUrl}/ethMomentsLeaderboard`;
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(url, config.authOptions);
     let listCards = [];
     data.map((item, index) => {
       const card = renderBox(index, item.address, item.count);
@@ -58,8 +58,7 @@ const LeaderBoard = () => {
 
   const renderBox = (index, wallet, count) => {
     return (
-      <Box>
-        <Ranking>{index + 1}</Ranking>
+      <Box key={index}>
         <Name>
           {wallet.slice(0, 4)}....{wallet.slice(-5)}
         </Name>

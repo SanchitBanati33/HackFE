@@ -16,16 +16,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Mint exact path="/"></Mint> */}
         <Routes>
-          {/* <Route  path="/profile">
-            <Profile />
-          </Route>
-
-          <Route  path="/lb">
-            <LeaderBoard />
-          </Route> */}
-
           <Route
             exact
             path="/profile/:wallet"
@@ -57,10 +48,6 @@ function App() {
           />
         </Routes>
       </Router>
-
-      {/* <Mint></Mint> */}
-      {/* <LeaderBoard /> */}
-      {/* <Profile /> */}
     </div>
   );
 }

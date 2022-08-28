@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { RedeemOut, Redeem, Title, Description } from "../Redeem2";
 import "./style.css";
@@ -188,6 +189,7 @@ const EthMoments = () => {
     description: "",
     walletAddresses: [],
   });
+  const [enteredWallet, setEnteredWallet] = useState();
   const [walletAddresses, setWalletAddresses] = useState();
   const [nftTypeId, setNftTypeId] = useState();
   const [validTicketIds, setValidTicketIds] = useState([]);
@@ -465,8 +467,14 @@ const EthMoments = () => {
                   type="text"
                   placeholder="weed.eth, lsd.dao, coke.nft"
                   className="inputw"
+                  value={enteredWallet}
+                  onChange={(e) => setEnteredWallet(e.target.value)}
                 ></input>
-                <button className="submit">Submit</button>
+                {enteredWallet ? (
+                  <Link to={`/profile/${enteredWallet}`}>Submit</Link>
+                ) : (
+                  <button className="submit">Submit</button>
+                )}
               </div>
             </Popup>
           </Forum>
