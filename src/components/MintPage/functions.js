@@ -12,7 +12,7 @@ const baseUrl = `${config.dgApiBaseUrl}`;
 var numberOfEditions;
 
 export function useUploadArtwork() {
-  const uploadFile = async (file, AccessToken, library, momentsData) => {
+  const uploadFile = async (file, AccessToken, momentsData) => {
     const { title, description, walletAddresses } = momentsData;
     numberOfEditions = walletAddresses.length + 1;
 
@@ -82,7 +82,6 @@ export function useUploadArtwork() {
           description,
         },
         AccessToken,
-        library,
       });
       // console.log("editFormRes: ", editRes.data);
 
@@ -93,7 +92,6 @@ export function useUploadArtwork() {
           //   description: "Testing",
         },
         AccessToken,
-        library,
       });
       // console.log("saleFormRes: ", saleRes);
 
@@ -165,7 +163,6 @@ const submitEditForm = async ({
   nftTypeId,
   valuesForm,
   AccessToken,
-  library,
   isPublished = true,
   includeSale = true,
 }) => {
@@ -185,8 +182,7 @@ const submitEditForm = async ({
   const saleSetting = await getSalesSettings(
     valuesForm,
     nftTypeId,
-    creatorTypeId,
-    library
+    creatorTypeId
   );
   // console.log("sale setting: ", saleSetting);
 
@@ -216,14 +212,12 @@ const submitSaleSettingsForm = async ({
   nftTypeId,
   valuesForm,
   AccessToken,
-  library,
 }) => {
   const creatorTypeId = parseInt(nftTypeId.slice(-12), 16);
   const saleSetting = await getSalesSettings(
     valuesForm,
     nftTypeId,
-    creatorTypeId,
-    library
+    creatorTypeId
   );
   // console.log("sale setting form: ", saleSetting);
   return await submitArtworkSaleSettings(
@@ -235,12 +229,7 @@ const submitSaleSettingsForm = async ({
   });
 };
 
-const getSalesSettings = async (
-  valuesForm,
-  nftTypeId,
-  creatorTypeId,
-  library
-) => {
+const getSalesSettings = async (valuesForm, nftTypeId, creatorTypeId) => {
   const price = 0,
     editionCount = numberOfEditions, // 10,
     sellOnProfile = true,
@@ -280,7 +269,7 @@ const getSalesSettings = async (
     console.error(err);
   }
 
-  const signature = await getLazyMintSignature(values, creatorTypeId, library);
+  const signature = await getLazyMintSignature(values, creatorTypeId);
 
   //    = valuesForm;
 
@@ -322,7 +311,7 @@ export const getDistributionProfit = (creatorShares) => {
   return sharing;
 };
 
-const getLazyMintSignature = async (values, creatorTypeId, library) => {
+const getLazyMintSignature = async (values, creatorTypeId) => {
   const params = getLazyMintParams({
     // artwork,
     valuesForm: values,
@@ -343,7 +332,7 @@ const getLazyMintSignature = async (values, creatorTypeId, library) => {
       };
       const { data } = await axios.post(url, post_data, {
         headers: {
-          validate: "alpha romeo tango",
+          validate: process.env.REACT_APP_VALIDATE_TOKEN,
         },
       });
       signature = data.signature;
@@ -461,7 +450,7 @@ export const Claim = async (nftTypeId, walletAddresses) => {
   // console.log(params);
 
   try {
-    const url = `${config.apiBaseUrl}/mintEthccMoments/ethcc`;
+    const url = `${config.apiBaseUrl}/mintMoments/ethcc`;
     const post_data = {
       walletAddresses,
       nftTypeId,
@@ -469,7 +458,7 @@ export const Claim = async (nftTypeId, walletAddresses) => {
     };
     const { data } = await axios.post(url, post_data, {
       headers: {
-        validate: "alpha romeo tango",
+        validate: process.env.REACT_APP_VALIDATE_TOKEN,
       },
     });
     console.log(data);
