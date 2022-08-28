@@ -198,22 +198,11 @@ const EthMoments = () => {
   const [Error, setError] = useState(false);
 
   const getAccessToken = async () => {
-    const configOptions = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
-      // const url = `${config.dgApiBaseUrl}/authentication/authentication`;
-      // const res = await axios.post(url, data, configOptions);
-      // console.log(res.data);
       const url = `${config.apiBaseUrl}/getAccessToken`;
       const { data } = await axios.get(url);
       console.log("access token: ", data);
       setAccessToken(data);
-
-      // setAccessToken(res.data.accessToken);
     } catch (err) {}
   };
 
@@ -230,6 +219,22 @@ const EthMoments = () => {
     e.preventDefault();
   };
 
+  const postToDb = async () => {
+    try {
+      const url = `${config.apiBaseUrl}/ethMoments`;
+      console.log("url: ", url);
+      const data = {
+        addresses: momentsData.walletAddresses,
+        creatorAddress: momentsData.walletAddresses[0],
+      };
+      console.log(data);
+      await axios.post(url, data, config.authOptions);
+      console.log("posted to db as well..");
+    } catch (err) {
+      console.log("error posting to db..");
+    }
+  };
+
   const mintAMoment = async () => {
     setError(false);
     console.log("minting..");
@@ -241,6 +246,7 @@ const EthMoments = () => {
       }
       setSuccess(true);
       setNftTypeId(nftTypeId);
+      await postToDb();
     } catch (err) {
       setMinting(false);
       setError(true);

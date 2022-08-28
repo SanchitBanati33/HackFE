@@ -1,6 +1,11 @@
 const configTestnet = {
   chainId: 80001,
   apiBaseUrl: "https://honetpot.kraznikunderverse.com", //"https://eth-barcelona.kraznikunderverse.com",
+  authOptions: {
+    headers: {
+      validate: process.env.REACT_APP_VALIDATE_TOKEN,
+    },
+  },
   dgApiBaseUrl: "https://api-main.doingud.work",
   dgAppBaseUrl: "https://main.doingud.work",
   alchemyUrl: `https://polygon-mumbai.g.alchemy.com/v2/WWvtjuEXcDbNHpx1f65J2dF3PP8JhVwN`,
@@ -17,6 +22,11 @@ const configTestnet = {
 const configMainnet = {
   chainId: 137,
   apiBaseUrl: "https://prod.ethbarcelona.kraznikunderverse.com",
+  authOptions: {
+    headers: {
+      validate: process.env.REACT_APP_VALIDATE_TOKEN,
+    },
+  },
   dgApiBaseUrl: "https://api.doingud.com",
   dgAppBaseUrl: "https://doingud.com",
   alchemyUrl: `https://polygon-mainnet.g.alchemy.com/v2/VX9hsINm25dNmmBqKi9ydn_iBW4sio4i`,
